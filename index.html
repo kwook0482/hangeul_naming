@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f3">
+  <meta name="description" content="우리말의 아름다움을 발견하는 한글 작명 공간">
+  <title>이름, 마음을 담다 | 한글 작명 생성기</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" id="brand-home" type="button"><span class="brand-flower">✿</span><span>한글 작명 생성기</span></button>
+    <nav class="top-links"><button type="button" id="guide-button">서비스 안내</button><button type="button" id="faq-button">자주 묻는 질문</button></nav>
+    <button class="home-icon" id="home-button" type="button" aria-label="처음 화면으로">⌂</button>
+  </header>
+
+  <main>
+    <!-- 1. 메인 화면 -->
+    <section class="screen hero-screen active" id="screen-home">
+      <div class="hero-copy">
+        <p class="eyebrow">우리말의 아름다움을 발견하는 한글 작명 공간</p>
+        <h1><em>이름,</em> 마음을 담다</h1>
+        <p class="hero-subtitle">우리말의 아름다움을 발견하는 한글 작명 공간</p>
+        <div class="hero-tags"><span>감성적인 작명</span><span>우리말 이름</span><span>간편한 사용</span></div>
+        <button class="primary-button hero-start" id="start-button" type="button">작명 시작하기 <b>›</b></button>
+        <p class="hero-foot"><span></span> 세상에 하나뿐인, 아름다운 우리말 이름을 만나보세요 <span></span></p>
+      </div>
+    </section>
+
+    <!-- 2. 입력 화면 -->
+    <section class="screen input-screen" id="screen-input">
+      <div class="screen-brand"><span class="brand-flower">✿</span> 한글 작명 생성기 <button class="small-home" data-go="home" type="button" aria-label="처음으로">⌂</button></div>
+      <div class="input-intro">
+        <div class="robot-wrap"><img src="assets/assistant-robot.png" alt="하트를 안고 있는 작명 도우미 캐릭터"></div>
+        <div class="speech"><strong>어떤 느낌의 한글 이름을 원하시나요?</strong><p>원하는 조건을 편하게<br>말씀해 주세요.</p></div>
+      </div>
+      <form id="naming-form" class="naming-form">
+        <label class="sr-only" for="wish">원하는 이름 설명</label>
+        <textarea id="wish" rows="2" placeholder="예쁜 느낌의 부드럽고 세련된 여자아이 이름을 추천해 줘."></textarea>
+        <button class="send-button" type="submit" aria-label="이름 추천하기">➤</button>
+      </form>
+      <div class="keyword-panel"><strong>💡 이런 키워드도 좋아요!</strong><div class="keyword-list">
+        <button class="chip" type="button" data-prompt="밝고 긍정적인 느낌의 이름">밝고 긍정적인</button>
+        <button class="chip" type="button" data-prompt="고운 이미지의 부드러운 이름">고운 이미지</button>
+        <button class="chip" type="button" data-prompt="자연스러운 우리말 이름">자연스러운</button>
+        <button class="chip" type="button" data-prompt="지혜롭고 단정한 느낌의 이름">지혜로운</button>
+      </div></div>
+      <details class="advanced-options"><summary>이름 조건 추가하기</summary><div class="option-grid">
+        <label>성씨 <input id="surname" maxlength="2" placeholder="예: 김"></label>
+        <label>성별 <select id="gender"><option value="전체">상관없음</option><option value="여자">여자아이</option><option value="남자">남자아이</option></select></label>
+        <label>이름 유형 <select id="name-type"><option value="전체">전체 이름</option><option value="순우리말">순우리말</option><option value="현대적">현대적인 이름</option></select></label>
+        <label>글자 수 <select id="syllables"><option value="2">두 글자</option><option value="3">세 글자</option><option value="전체">상관없음</option></select></label>
+      </div></details>
+      <p class="privacy-note">외부 AI나 서버 없이 이름 데이터와 규칙으로 추천합니다.</p>
+    </section>
+
+    <!-- 3. 추천 결과 화면 -->
+    <section class="screen result-screen" id="screen-results">
+      <div class="screen-brand"><span class="brand-flower">✿</span> 한글 작명 생성기 <div class="result-tools"><span id="counter">추천 이름 2개</span><button id="regenerate-button" class="light-button" type="button">↻ 다시 생성하기</button></div></div>
+      <div class="section-title"><span></span><h2>당신을 위해 찾은 아름다운 이름</h2><span></span></div>
+      <div class="name-grid" id="name-grid"></div>
+      <div class="result-actions"><button class="primary-button" id="show-selected-button" type="button">♥ 마음에 드는 이름 선택하기 <b>›</b></button><button class="outline-button" id="more-button" type="button">↻ 다른 이름 다시 추천받기</button></div>
+      <p class="result-note">ⓘ 재생성은 준비된 이름 데이터가 남아 있는 동안 가능합니다. 이미 추천한 이름은 다시 나오지 않습니다.</p>
+      <button class="back-link" data-go="input" type="button">‹ 조건 다시 입력하기</button>
+    </section>
+
+    <!-- 4. 최종 선택 화면 -->
+    <section class="screen final-screen" id="screen-final">
+      <div class="screen-brand"><span class="brand-flower">✿</span> 한글 작명 생성기 <button class="print-top" id="print-button" type="button">▤ 인쇄하기</button></div>
+      <div class="section-title"><span></span><h2>최종 선택한 이름</h2><span></span></div>
+      <div id="final-list" class="final-list"></div>
+      <div class="final-actions"><button class="outline-button" id="back-results" type="button">추천 이름 더 살펴보기</button><button class="primary-button" id="print-bottom" type="button">▤ 선택한 이름 인쇄하기</button></div>
+      <p class="final-note">선택한 이름의 의미와 인상을 정리한 결과입니다. 실제 이름으로 사용하기 전에는 가족의 의견과 이름 사용 사례 등을 함께 살펴보세요.</p>
+    </section>
+  </main>
+  <div class="modal" id="info-modal" hidden><div class="modal-card"><button id="close-modal" class="modal-close" type="button">×</button><h3 id="modal-title">서비스 안내</h3><div id="modal-content"></div></div></div>
+  <script src="data.js"></script><script src="script.js"></script>
+</body></html>
